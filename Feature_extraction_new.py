@@ -53,15 +53,15 @@ def sitepopularity(host):
             return [nf,nf]
 
 
-def Security_sensitive(tokens_words):
+def get_sec_sensitive_words(tokenized_words):
 
-    sec_sen_words=['confirm', 'account', 'banking', 'secure', 'ebayisapi', 'webscr', 'login', 'signin']
-    cnt=0
-    for ele in sec_sen_words:
-        if(ele in tokens_words):
-            cnt+=1;
+    sec_sen_words=['confirm', 'account', 'banking', 'secure', 'viagra', 'rolex', 'login', 'signin']
+    count=0
+    for element in sec_sen_words:
+        if(element in tokenized_words):
+            count= count + 1;
 
-    return cnt
+    return count
 
 def url_has_exe(url):
     if url.find('.exe')!=-1:
