@@ -63,7 +63,7 @@ def Security_sensitive(tokens_words):
 
     return cnt
 
-def exe_in_url(url):
+def url_has_exe(url):
     if url.find('.exe')!=-1:
         return 1
     return 0
