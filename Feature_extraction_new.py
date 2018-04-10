@@ -37,17 +37,16 @@ def find_ele_with_attribute(dom,ele,attribute):
     return nf
         
 
-def sitepopularity(host):
+def site_popularity_index(host_name):
 
         xmlpath='http://data.alexa.com/data?cli=10&dat=snbamz&url='+host
-        #print xmlpath
+        
         try:
-            xml= urllib2.urlopen(xmlpath)
-            dom =minidom.parse(xml)
-            rank_host=find_ele_with_attribute(dom,'REACH','RANK')
-            #country=find_ele_with_attribute(dom,'REACH','RANK')
-            rank_country=find_ele_with_attribute(dom,'COUNTRY','RANK')
-            return [rank_host,rank_country]
+            get_xml= urllib2.urlopen(xmlpath)
+            get_dom =minidom.parse(get_xml)
+            get_rank_host=find_ele_with_attribute(get_dom,'REACH','RANK')
+            ranked_country=find_ele_with_attribute(get_dom,'COUNTRY','RANK')
+            return [get_rank_host,ranked_country]
 
         except:
             return [nf,nf]
@@ -68,25 +67,25 @@ def url_has_exe(url):
         return 1
     return 0
 
-def Check_IPaddress(tokens_words):
+def get_IPaddress(tokenized_words):
 
-    cnt=0;
-    for ele in tokens_words:
-        if unicode(ele).isnumeric():
-            cnt+=1
+    count=0;
+    for element in tokenized_words:
+        if unicode(element).isnumeric():
+            count= count + 1
         else:
-            if cnt>=4 :
+            if count >=4 :
                 return 1
             else:
                 cnt=0;
-    if cnt>=4:
+    if count >=4:
         return 1
     return 0
     
-def getASN(host):
+def getASN(host_info):
     try:
         g = pygeoip.GeoIP('GeoIPASNum.dat')
-        asn=int(g.org_by_name(host).split()[0][2:])
+        asn=int(g.org_by_name(host_info).split()[0][2:])
         return asn
     except:
         return  nf
