@@ -93,45 +93,45 @@ def getASN(host):
 
 
 def web_content_features(url):
-    wfeatures={}
-    total_cnt=0
+    webfeatures={}
+    total_count=0
     try:        
         source_code = str(opener.open(url))
         #print source_code[:500]
 
-        wfeatures['src_html_cnt']=source_code.count('<html')
-        wfeatures['src_hlink_cnt']=source_code.count('<a href=')
-        wfeatures['src_iframe_cnt']=source_code.count('<iframe')
+        webfeatures['src_html_cnt']=source_code.count('<html')
+        webfeatures['src_hlink_cnt']=source_code.count('<a href=')
+        webfeatures['src_iframe_cnt']=source_code.count('<iframe')
         #suspicioussrc_ javascript functions count
 
-        wfeatures['src_eval_cnt']=source_code.count('eval(')
-        wfeatures['src_escape_cnt']=source_code.count('escape(')
-        wfeatures['src_link_cnt']=source_code.count('link(')
-        wfeatures['src_underescape_cnt']=source_code.count('underescape(')
-        wfeatures['src_exec_cnt']=source_code.count('exec(')
-        wfeatures['src_search_cnt']=source_code.count('search(')
+        webfeatures['src_eval_cnt']=source_code.count('eval(')
+        webfeatures['src_escape_cnt']=source_code.count('escape(')
+        webfeatures['src_link_cnt']=source_code.count('link(')
+        webfeatures['src_underescape_cnt']=source_code.count('underescape(')
+        webfeatures['src_exec_cnt']=source_code.count('exec(')
+        webfeatures['src_search_cnt']=source_code.count('search(')
         
-        for key in wfeatures:
+        for key in webfeatures:
             if(key!='src_html_cnt' and key!='src_hlink_cnt' and key!='src_iframe_cnt'):
-                total_cnt+=wfeatures[key]
-        wfeatures['src_total_jfun_cnt']=total_cnt
+                total_count=total_count + webfeatures[key]
+        webfeatures['src_total_jfun_cnt']=total_count
     
     except Exception, e:
         print "Error"+str(e)+" in downloading page "+url 
-        default_val=nf
+        default_value=nf
         
-        wfeatures['src_html_cnt']=default_val
-        wfeatures['src_hlink_cnt']=default_val
-        wfeatures['src_iframe_cnt']=default_val
-        wfeatures['src_eval_cnt']=default_val
-        wfeatures['src_escape_cnt']=default_val
-        wfeatures['src_link_cnt']=default_val
-        wfeatures['src_underescape_cnt']=default_val
-        wfeatures['src_exec_cnt']=default_val
-        wfeatures['src_search_cnt']=default_val
-        wfeatures['src_total_jfun_cnt']=default_val    
+        webfeatures['src_html_cnt']=default_value
+        webfeatures['src_hlink_cnt']=default_value
+        webfeatures['src_iframe_cnt']=default_value
+        webfeatures['src_eval_cnt']=default_value
+        webfeatures['src_escape_cnt']=default_value
+        wfeatures['src_link_cnt']=default_value
+        webfeatures['src_underescape_cnt']=default_value
+        webfeatures['src_exec_cnt']=default_value
+        webfeatures['src_search_cnt']=default_value
+        webfeatures['src_total_jfun_cnt']=default_value    
     
-    return wfeatures
+    return webfeatures
 
 def safebrowsing(url):
     api_key = "ABQIAAAA8C6Tfr7tocAe04vXo5uYqRTEYoRzLFR0-nQ3fRl5qJUqcubbrw"
