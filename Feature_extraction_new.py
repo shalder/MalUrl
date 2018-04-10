@@ -125,7 +125,7 @@ def web_content_features(url):
         webfeatures['src_iframe_cnt']=default_value
         webfeatures['src_eval_cnt']=default_value
         webfeatures['src_escape_cnt']=default_value
-        wfeatures['src_link_cnt']=default_value
+        webfeatures['src_link_cnt']=default_value
         webfeatures['src_underescape_cnt']=default_value
         webfeatures['src_exec_cnt']=default_value
         webfeatures['src_search_cnt']=default_value
