@@ -13,5 +13,5 @@ file="$now.txt"
 val=$(top -b -n 1)
 echo "$val" > "$file"
 
-#metrics.py goes here
+python2 $PWD/metrics.py $PWD/lastsnap/ $PWD/$file
 
