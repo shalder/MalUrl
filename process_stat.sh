@@ -2,8 +2,8 @@
 #! /bin/bash
 # unset any variable which system may be using
 
-lastsnap=$(ls *pred* | sort -n | tail -1)
-echo $lastsnap
+#lastsnap=$(ls *pred* | sort -n | tail -1)
+#echo $lastsnap
 #
 n=$(date '+%s')
 #echo $now
@@ -13,5 +13,5 @@ file="$now.txt"
 val=$(top -b -n 1)
 echo "$val" > "$file"
 
-python2 $PWD/metrics.py $PWD/lastsnap/ $PWD/$file
+#python2 $PWD/metrics.py $PWD/lastsnap/ $PWD/$file
 
